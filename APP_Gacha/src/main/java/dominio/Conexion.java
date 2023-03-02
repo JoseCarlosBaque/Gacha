@@ -25,7 +25,7 @@ public class Conexion {
         try {
             Class.forName("com.mysql.jdbc.Driver");
             conectar = DriverManager.getConnection(cadena, usuario, contrasenia);
-            JOptionPane.showMessageDialog(null, "Conexion realizada con Exito");
+            //JOptionPane.showMessageDialog(null, "Conexion realizada con Exito");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error de conexion: " + e.toString());
         }

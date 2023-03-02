@@ -8,7 +8,9 @@ package dominio;
  *
  * @author joseb
  */
-public class Carta {
-    private int id_carta;
+public class Destreza {
+    private int id_destreza;
     private String tipo;
+    private int danio;
+    private int multlipicador;
 }

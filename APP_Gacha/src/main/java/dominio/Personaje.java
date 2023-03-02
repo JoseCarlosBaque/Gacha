@@ -14,12 +14,12 @@ public class Personaje {
     private String titulo;
     private String tipo;
     private int salud;
+    private int nivel;
     private int daño_fisico;
     private int daño_energia;
     private int defensa_fisica;
     private int defensa_enegia;
     private int critico;
-    private int nivel;
     private int soul;
     private int estrellas;
 }

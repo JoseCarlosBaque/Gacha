@@ -12,7 +12,7 @@ import dominio.Conexion;
  */
 public class Main {
     public static void main(String[] args) {
-        Conexion conex = new Conexion();
-        conex.comprobarConexion();
+        Login login = new Login();
+        login.setVisible(true);
     }
 }
