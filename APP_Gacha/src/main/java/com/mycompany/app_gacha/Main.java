@@ -4,7 +4,6 @@
  */
 package com.mycompany.app_gacha;
 
-import dominio.Conexion;
 
 /**
  *
