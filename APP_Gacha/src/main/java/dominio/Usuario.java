@@ -77,10 +77,6 @@ public class Usuario {
         }
     }
     
-//    public void registrar() {
-//        
-//    }
-    
     public void registrar_user(JTextField usuario, JPasswordField clave) {
         setUsuario(usuario.getText());
         String contra = String.valueOf(clave.getPassword());

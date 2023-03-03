@@ -1,9 +1,10 @@
+package com.mycompany.app_gacha;
+
 /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import com.mycompany.app_gacha.MenuPrincipal;
 import dominio.Usuario;
 import javax.swing.JOptionPane;
 
@@ -11,12 +12,12 @@ import javax.swing.JOptionPane;
  *
  * @author joseb
  */
-public class Cuenta extends javax.swing.JFrame {
+public class Registrar extends javax.swing.JFrame {
 
     /**
      * Creates new form Registro
      */
-    public Cuenta() {
+    public Registrar() {
         initComponents();
         this.setLocationRelativeTo(null);
     }
@@ -41,7 +42,6 @@ public class Cuenta extends javax.swing.JFrame {
         jButtonConfrimar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(32767, 32767));
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Cuenta"));
 
@@ -153,14 +153,18 @@ public class Cuenta extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Cuenta.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Registrar.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
         //</editor-fold>
@@ -169,7 +173,7 @@ public class Cuenta extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Cuenta().setVisible(true);
+                new Registrar().setVisible(true);
             }
         });
     }
