@@ -4,6 +4,10 @@
  */
 package com.mycompany.app_gacha;
 
+import static com.mycompany.app_gacha.Main.tabla;
+import com.mycompany.dominio.Personaje;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author joseb
@@ -16,7 +20,21 @@ public class Coleccion extends javax.swing.JFrame {
     public Coleccion() {
         initComponents();
         this.setLocationRelativeTo(null);
-    }
+        DefaultTableModel modelo = new DefaultTableModel();
+        modelo.addColumn("ID");
+        modelo.addColumn("Nombre");
+        modelo.addColumn("TAG");
+        modelo.addColumn("Tipo");
+        String[] datos = new String[4];
+        tabla.forEach(personaje -> {
+           datos[0] = String.valueOf(personaje.getId_personaje());
+           datos[1] = personaje.getNombre();
+           datos[2] = personaje.getTitulo();
+           datos[3] = personaje.getTipo();
+           modelo.addRow(datos);
+        });
+        jTablePersonaje.setModel(modelo);
+   }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -27,18 +45,40 @@ public class Coleccion extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel1 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTablePersonaje = new javax.swing.JTable();
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Lista Personjaes"));
+        jPanel1.setAutoscrolls(true);
+
+        jTablePersonaje.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jTablePersonaje.setEditingColumn(0);
+        jTablePersonaje.setEditingRow(0);
+        jScrollPane1.setViewportView(jTablePersonaje);
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 390, Short.MAX_VALUE)
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
         );
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -79,5 +119,8 @@ public class Coleccion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTable jTablePersonaje;
     // End of variables declaration//GEN-END:variables
 }

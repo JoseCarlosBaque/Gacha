@@ -4,21 +4,21 @@
  */
 package com.mycompany.app_gacha;
 
-import dominio.Usuario;
-import java.awt.event.ActionListener;
+import static com.mycompany.app_gacha.Main.user_SQL;
 
 /**
  *
  * @author joseb
  */
 public class Login extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form Inicio_Jframe
      */
     public Login() {
         initComponents();
         this.setLocationRelativeTo(null);
+        
     }
 
     /**
@@ -40,6 +40,7 @@ public class Login extends javax.swing.JFrame {
         jButtonCrearCuenta = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio Sesion");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Iniciar Sesion"));
 
@@ -61,14 +62,14 @@ public class Login extends javax.swing.JFrame {
 
         jLabel3.setText("DB DAM");
 
-        jButtonLogear.setText("Login");
+        jButtonLogear.setText("Iniciar Sesion");
         jButtonLogear.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonLogearActionPerformed(evt);
             }
         });
 
-        jButtonCrearCuenta.setText("Crear Cuenta");
+        jButtonCrearCuenta.setText("Registrase");
         jButtonCrearCuenta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonCrearCuentaActionPerformed(evt);
@@ -91,18 +92,15 @@ public class Login extends javax.swing.JFrame {
                             .addComponent(jTextUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 149, Short.MAX_VALUE)
                             .addComponent(jPassword)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(106, 106, 106)
-                                .addComponent(jLabel3))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGap(87, 87, 87)
-                                .addComponent(jButtonCrearCuenta)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(107, 107, 107)
+                        .addComponent(jLabel3)
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(100, 100, 100)
-                .addComponent(jButtonLogear)
+                .addGap(89, 89, 89)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jButtonCrearCuenta, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jButtonLogear))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -117,11 +115,11 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel2)
                     .addComponent(jPassword, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(30, 30, 30)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonLogear)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonCrearCuenta)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -147,9 +145,10 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordActionPerformed
 
     private void jButtonLogearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogearActionPerformed
-        this.setVisible(false);
-        Usuario user = new Usuario();
-        user.validar_user(jTextUsuario, jPassword);
+        //Usuario user = new Usuario();
+        if (user_SQL.validar_usuario(jTextUsuario, jPassword) == true) {
+            this.setVisible(false); 
+        }
     }//GEN-LAST:event_jButtonLogearActionPerformed
 
     private void jButtonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearCuentaActionPerformed

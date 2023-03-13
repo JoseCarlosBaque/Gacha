@@ -5,7 +5,7 @@ package com.mycompany.app_gacha;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import dominio.Usuario;
+import static com.mycompany.app_gacha.Main.user_SQL;
 import javax.swing.JOptionPane;
 
 /**
@@ -40,8 +40,10 @@ public class Registrar extends javax.swing.JFrame {
         jPasswordField = new javax.swing.JPasswordField();
         jPasswordFieldConfirm = new javax.swing.JPasswordField();
         jButtonConfrimar = new javax.swing.JButton();
+        jButtonInicoSesion = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Registrarse");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Crear Cuenta"));
 
@@ -57,6 +59,13 @@ public class Registrar extends javax.swing.JFrame {
         jButtonConfrimar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonConfrimarActionPerformed(evt);
+            }
+        });
+
+        jButtonInicoSesion.setText("Volver");
+        jButtonInicoSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonInicoSesionActionPerformed(evt);
             }
         });
 
@@ -82,8 +91,10 @@ public class Registrar extends javax.swing.JFrame {
                         .addGap(131, 131, 131)
                         .addComponent(jLabel3))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(120, 120, 120)
-                        .addComponent(jButtonConfrimar)))
+                        .addGap(111, 111, 111)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jButtonConfrimar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButtonInicoSesion, javax.swing.GroupLayout.PREFERRED_SIZE, 84, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -103,9 +114,11 @@ public class Registrar extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jPasswordFieldConfirm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jButtonConfrimar)
-                .addGap(30, 30, 30))
+                .addGap(8, 8, 8)
+                .addComponent(jButtonInicoSesion)
+                .addContainerGap(15, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -124,17 +137,23 @@ public class Registrar extends javax.swing.JFrame {
 
     private void jButtonConfrimarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfrimarActionPerformed
         MenuPrincipal menu = new MenuPrincipal();
-        Usuario user = new Usuario();
         String contra = String.valueOf(jPasswordField.getPassword());
         String contraConfirm = String.valueOf(jPasswordFieldConfirm.getPassword());
         if (contraConfirm.equals(contra) == true) {
-            user.registrar_user(jTextFieldUsuarioN, jPasswordField);
+            user_SQL.registrar_usuario(jTextFieldUsuarioN, jPasswordField);
+            user_SQL.validar_usuario(jTextFieldUsuarioN, jPasswordField);
             menu.setVisible(true);
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "La contraseñas no coinciden");
         }
     }//GEN-LAST:event_jButtonConfrimarActionPerformed
+
+    private void jButtonInicoSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicoSesionActionPerformed
+        this.setVisible(false);
+        Login volver = new Login();
+        volver.setVisible(true);
+    }//GEN-LAST:event_jButtonInicoSesionActionPerformed
 
     /**
      * @param args the command line arguments
@@ -180,6 +199,7 @@ public class Registrar extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonConfrimar;
+    private javax.swing.JButton jButtonInicoSesion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

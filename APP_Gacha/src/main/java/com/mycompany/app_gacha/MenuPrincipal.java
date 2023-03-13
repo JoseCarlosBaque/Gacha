@@ -13,6 +13,8 @@ import javax.swing.ImageIcon;
  * @author joseb
  */
 public class MenuPrincipal extends javax.swing.JFrame {
+    
+    private int cont = 1;
 
     /**
      * Creates new form MenuPrincipal
@@ -25,6 +27,8 @@ public class MenuPrincipal extends javax.swing.JFrame {
         ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Login.png");//Ruta Relativa
         Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(fondo);
+        jLabel2.setText(Main.user.getUsuario());
+        jLabel4.setText("Lvl: " + String.valueOf(Main.user.getNivel()));
     }
 
     /**
@@ -36,6 +40,9 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel4 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -50,10 +57,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jItemBannerHistoria = new javax.swing.JMenuItem();
         jItemBannerEspecial1 = new javax.swing.JMenuItem();
         jItemBannerEspecial2 = new javax.swing.JMenuItem();
+        jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Menu Principal");
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
+
+        jLabel3.setText("Toca para ver id de Usuario");
+        jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel3MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
 
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 183));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 388, 318));
 
         jMenu1.setText("Menu");
 
@@ -148,18 +169,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
 
         jMenuBar1.add(jMenu3);
 
-        setJMenuBar(jMenuBar1);
+        jMenu4.setText("Tienda");
+        jMenuBar1.add(jMenu4);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 388, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, 317, Short.MAX_VALUE)
-        );
+        setJMenuBar(jMenuBar1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,6 +231,15 @@ public class MenuPrincipal extends javax.swing.JFrame {
         banner1.setVisible(true);
     }//GEN-LAST:event_jItemBannerEspecial1ActionPerformed
 
+    private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        cont++;
+        if (cont % 2 == 0) {
+            jLabel3.setText("ID: " + Main.user.getId_usuario());
+        }else if (cont % 2 != 0) {
+            jLabel3.setText("Toca para ver id de Usuario");
+        }
+    }//GEN-LAST:event_jLabel3MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -264,9 +286,13 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenuItem jItemHistoria;
     private javax.swing.JMenuItem jItemPersonaje;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     // End of variables declaration//GEN-END:variables
 }
