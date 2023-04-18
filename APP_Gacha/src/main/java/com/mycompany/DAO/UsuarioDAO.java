@@ -8,7 +8,6 @@ import com.mycompany.app_gacha.Main;
 import com.mycompany.app_gacha.MenuPrincipal;
 import static com.mycompany.DAO.Conexion.getConexion;
 import com.mycompany.dominio.Usuario;
-import java.sql.CallableStatement;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import javax.swing.JOptionPane;
@@ -19,16 +18,41 @@ import javax.swing.JTextField;
  *
  * @author joseb
  */
-public class UsuarioDAO {
-    private final String SQL_LOGIN = "SELECT * FROM usuario WHERE usuario.usuario = ? and usuario.clave = ?;";
-    private final String SQL_REGISTRAR = "INSERT INTO usuario (usuario.usuario, usuario.clave) VALUES (?, ?);";
+public class UsuarioDAO implements IUsuarioDAO{
+    private final String SQL_REGISTRAR = "INSERT INTO usuario (usuario, clave) VALUES (?, ?);";
+    private final String SQL_LOGIN = "SELECT * FROM usuario WHERE usuario = ? and clave = ?;";
+    private final String SQL_DELETE = "DELETE FROM usuario WHERE id_usuario = ?;";
     
+    //Registrar un Usuario nuevo
+    @Override
+    public void registrar_usuario(JTextField usuario, JPasswordField clave) {
+        String contra = String.valueOf(clave.getPassword());
+        PreparedStatement ps = null;
+        try {
+            ps = getConexion().prepareCall(SQL_REGISTRAR);
+            ps.setString(1, usuario.getText());
+            ps.setString(2, contra);
+            ps.executeUpdate();
+            JOptionPane.showMessageDialog(null, "Se registro correctamente");
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error: " + e.toString());
+        } finally {
+            try {
+                ps.close();
+                getConexion().close();
+            } catch (Exception e) {
+                JOptionPane.showMessageDialog(null, "Error: " + e.toString());
+            }
+        }
+    }
+    
+    //Crear Objeto de Clara usuario
+    @Override
     public boolean validar_usuario(JTextField usuario, JPasswordField clave) {
         boolean visible = false;
-        //String consulta = "SELECT * FROM usuario WHERE usuario.usuario = ? and usuario.clave = ?;";
         String contra = String.valueOf(clave.getPassword());
-        ResultSet rs = null;
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
             ps = getConexion().prepareCall(SQL_LOGIN);
             ps.setString(1, usuario.getText());
@@ -36,7 +60,6 @@ public class UsuarioDAO {
             rs = ps.executeQuery();
             if (rs.next()) {
                 Main.user = new Usuario(rs.getInt("id_usuario"), rs.getString("usuario"), rs.getString("clave"), rs.getInt("nivel"));
-                //visible = true;
                 JOptionPane.showMessageDialog(null, "Se inicio sesion correctamente");
                 visible = true;
                 MenuPrincipal menu = new MenuPrincipal();
@@ -60,20 +83,20 @@ public class UsuarioDAO {
         return visible;
     }
     
-    public void registrar_usuario(JTextField usuario, JPasswordField clave) {
-        String contra = String.valueOf(clave.getPassword());
+    //Eliminar un Usuario
+    @Override
+    public void elimina_user(Usuario user) {
         PreparedStatement ps = null;
+        ResultSet rs = null;
         try {
-            ps = getConexion().prepareCall(SQL_REGISTRAR);
-            ps.setString(1, usuario.getText());
-            ps.setString(2, contra);
-            ps.execute();
-            JOptionPane.showMessageDialog(null, "Se registro correctamente");
-            ps.close();
+            ps = getConexion().prepareStatement(SQL_DELETE);
+            ps.setInt(1, user.getId_usuario());
+            ps.executeUpdate();
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
+                rs.close();
                 ps.close();
                 getConexion().close();
             } catch (Exception e) {

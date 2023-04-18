@@ -14,10 +14,16 @@ import java.util.List;
  * @author joseb
  */
 public class Main {
-    public static UsuarioDAO user_SQL = new UsuarioDAO();
+    //Variable Globales
+    public static IUsuarioDAO user_SQL = new UsuarioDAO();
     public static Usuario user = new Usuario();
-    public static PersonajeDAO player_SQL = new PersonajeDAO();
+    public static IPersonajeDAO player_SQL = new PersonajeDAO();
     public static List<Personaje> tabla = player_SQL.rellenar_personajes();
+    public static Progreso progress = new Progreso();
+    public static IProgesoDAO progress_sql = new ProgresoDAO();
+    public static IEventoDAO event_SQL = new EventoDAO();
+    public static List<Evento> eventos = event_SQL.rellenar_eventos();
+    //Fin Variables Globales
     
     public static void main(String[] args) {
         Login login = new Login();

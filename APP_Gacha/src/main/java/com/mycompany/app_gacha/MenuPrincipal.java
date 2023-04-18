@@ -14,6 +14,7 @@ import javax.swing.ImageIcon;
  */
 public class MenuPrincipal extends javax.swing.JFrame {
     
+    //Contador para el MouseClicked()
     private int cont = 1;
 
     /**
@@ -25,10 +26,12 @@ public class MenuPrincipal extends javax.swing.JFrame {
         //Codigo para poner una imagen de fondo
         //"D:\\1º DAW\\Programación\\CEEP\\Github_Local\\Gacha\\APP_Gacha\\src\\main\\java\\images\\Login.png" Ruta Absoluta
         ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Login.png");//Ruta Relativa
+        //Para que se adapte al tamaño del JLabel
         Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(fondo);
-        jLabel2.setText(Main.user.getUsuario());
-        jLabel4.setText("Lvl: " + String.valueOf(Main.user.getNivel()));
+        //Poner los datos del usuario
+        jLabel2.setText("Lvl: " + Main.user.getNivel() + "     " + Main.user.getUsuario());
+        jLabel2.setLocation(WIDTH, WIDTH);
     }
 
     /**
@@ -40,7 +43,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel4 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -62,7 +64,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-        getContentPane().add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(190, 10, -1, -1));
 
         jLabel3.setText("Toca para ver id de Usuario");
         jLabel3.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -71,10 +72,14 @@ public class MenuPrincipal extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, -1, -1));
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 10, -1, -1));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jLabel2.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 10, 220, 20));
 
         jLabel1.setMaximumSize(new java.awt.Dimension(200, 183));
-        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 388, 318));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 430, 330));
 
         jMenu1.setText("Menu");
 
@@ -232,6 +237,7 @@ public class MenuPrincipal extends javax.swing.JFrame {
     }//GEN-LAST:event_jItemBannerEspecial1ActionPerformed
 
     private void jLabel3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel3MouseClicked
+        //Evento para cuando clickeas enseñe o esconda el id de usuario
         cont++;
         if (cont % 2 == 0) {
             jLabel3.setText("ID: " + Main.user.getId_usuario());
@@ -288,7 +294,6 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;

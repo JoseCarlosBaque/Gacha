@@ -4,6 +4,7 @@
  */
 package com.mycompany.app_gacha;
 
+import static com.mycompany.app_gacha.Main.progress_sql;
 import static com.mycompany.app_gacha.Main.user_SQL;
 
 /**
@@ -145,13 +146,15 @@ public class Login extends javax.swing.JFrame {
     }//GEN-LAST:event_jPasswordActionPerformed
 
     private void jButtonLogearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonLogearActionPerformed
-        //Usuario user = new Usuario();
+        //Validar usuario y si delvuelve true que deje de ser visible la venana
         if (user_SQL.validar_usuario(jTextUsuario, jPassword) == true) {
+            progress_sql.crear_objeto();
             this.setVisible(false); 
         }
     }//GEN-LAST:event_jButtonLogearActionPerformed
 
     private void jButtonCrearCuentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCrearCuentaActionPerformed
+        //Crear la ventana para registrarse
         Registrar crear = new Registrar();
         this.setVisible(false);
         crear.setVisible(true);

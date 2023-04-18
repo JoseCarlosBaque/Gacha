@@ -20,20 +20,29 @@ public class Coleccion extends javax.swing.JFrame {
     public Coleccion() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //Diseño de la tabla a visualizar
         DefaultTableModel modelo = new DefaultTableModel();
         modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("TAG");
         modelo.addColumn("Tipo");
-        String[] datos = new String[4];
+        modelo.addColumn("Conseguido");
+        String[] datos = new String[5];
+        //Datos a mostrar en el jTable
         tabla.forEach(personaje -> {
            datos[0] = String.valueOf(personaje.getId_personaje());
            datos[1] = personaje.getNombre();
            datos[2] = personaje.getTitulo();
            datos[3] = personaje.getTipo();
+           if (personaje.isConseguido() == true) {
+               datos[4] = "✔";
+            } else if (personaje.isConseguido() == false) {
+                datos[4] = "x";
+            }
            modelo.addRow(datos);
         });
         jTablePersonaje.setModel(modelo);
+        jLabel1.setText("Lvl: " + Main.user.getNivel() + " " + Main.user.getUsuario());
    }
 
     /**
@@ -48,6 +57,8 @@ public class Coleccion extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTablePersonaje = new javax.swing.JTable();
+        jMenuPrincipal = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -75,13 +86,29 @@ public class Coleccion extends javax.swing.JFrame {
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 277, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 247, Short.MAX_VALUE)
         );
 
-        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 400, 300));
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 30, 400, 270));
+
+        jMenuPrincipal.setText("<-");
+        jMenuPrincipal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuPrincipalActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jMenuPrincipal, new org.netbeans.lib.awtextra.AbsoluteConstraints(5, 7, 50, 20));
+        getContentPane().add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 10, -1, -1));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jMenuPrincipalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuPrincipalActionPerformed
+        //Para crear la ventana del Menu
+        MenuPrincipal mp = new MenuPrincipal();
+        this.setVisible(false);
+        mp.setVisible(true);
+    }//GEN-LAST:event_jMenuPrincipalActionPerformed
 
     /**
      * @param args the command line arguments
@@ -119,6 +146,8 @@ public class Coleccion extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jMenuPrincipal;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTablePersonaje;

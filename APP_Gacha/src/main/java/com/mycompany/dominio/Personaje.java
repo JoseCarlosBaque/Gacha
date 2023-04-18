@@ -22,6 +22,7 @@ public class Personaje {
     private int critico;
     private int soul;
     private int estrellas;
+    private boolean conseguido;
 
     public Personaje() {
     }
@@ -159,5 +160,13 @@ public class Personaje {
 
     public void setEstrellas(int estrellas) {
         this.estrellas = estrellas;
+    }
+
+    public boolean isConseguido() {
+        return conseguido;
+    }
+
+    public void setConseguido(boolean conseguido) {
+        this.conseguido = conseguido;
     }
 }

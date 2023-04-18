@@ -15,8 +15,11 @@ import javax.swing.JOptionPane;
  *
  * @author joseb
  */
-public class PersonajeDAO {
+public class PersonajeDAO implements IPersonajeDAO{
     private final String SQL_SELECT = "SELECT * FROM personaje;";
+    
+    //Para hacer una lista con todos los objetos de clase Personaje
+    @Override
     public List<Personaje> rellenar_personajes() {
         PreparedStatement ps = null;
         ResultSet rs = null;

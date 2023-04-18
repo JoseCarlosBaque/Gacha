@@ -4,6 +4,10 @@
  */
 package com.mycompany.app_gacha;
 
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author joseb
@@ -16,6 +20,10 @@ public class Historia extends javax.swing.JFrame {
     public Historia() {
         initComponents();
         this.setLocationRelativeTo(null);
+        //[500, 281]
+        ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Historia.png");
+        Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
+        jLabel1.setIcon(fondo);
     }
 
     /**
@@ -27,11 +35,38 @@ public class Historia extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel4 = new javax.swing.JPanel();
+        jComboBox2 = new javax.swing.JComboBox<>();
+        jVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
+        jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dimensional Distorsion", "After the Tournament...", "Pursuing Mercenary Tao", "Unrivaled Assasin", "Reinvestigation", "Invasion of the Warrior Race", "Premonition of Doom", "Ghost Town Investigation", "Mysterious Ki", "New Enemy", "Malicious Android: Cell", "Squad Leader", "World´s Greatest Teacher", "Telekinetic Threat", "Clever Krilin", "Turtle School Trial Lesson", "Revenge of Crane School", "Crane School Pride", "Fierce Fight for Honor", "Alien Warior Encounter" }));
+        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+
+        jVolver.setText("<-");
+        jVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVolverActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
+        jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 281));
+
+        getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 410));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVolverActionPerformed
+        MenuPrincipal mp = new MenuPrincipal();
+        this.setVisible(false);
+        mp.setVisible(true);
+    }//GEN-LAST:event_jVolverActionPerformed
 
     /**
      * @param args the command line arguments
@@ -69,5 +104,9 @@ public class Historia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton jVolver;
     // End of variables declaration//GEN-END:variables
 }

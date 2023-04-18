@@ -5,7 +5,7 @@ package com.mycompany.app_gacha;
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
-import static com.mycompany.app_gacha.Main.user_SQL;
+import static com.mycompany.app_gacha.Main.*;
 import javax.swing.JOptionPane;
 
 /**
@@ -136,13 +136,23 @@ public class Registrar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonConfrimarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonConfrimarActionPerformed
-        MenuPrincipal menu = new MenuPrincipal();
+        //Confirmar el registro del usuario
         String contra = String.valueOf(jPasswordField.getPassword());
         String contraConfirm = String.valueOf(jPasswordFieldConfirm.getPassword());
+        //Confirmar que las dos contraseña son iguales
         if (contraConfirm.equals(contra) == true) {
+            //Registrar usuario
             user_SQL.registrar_usuario(jTextFieldUsuarioN, jPasswordField);
+            //Validarlo para que se guarde como objeto Usuario
             user_SQL.validar_usuario(jTextFieldUsuarioN, jPasswordField);
-            menu.setVisible(true);
+            //Registrar el nuevo progreso
+            progress_sql.nuevo_progreso(user.getId_usuario());
+            //Crear objeto
+            progress_sql.crear_objeto();
+            //Nuevo registros
+            event_SQL.nuevo_user_evento();
+            eventos.removeAll(eventos);
+            eventos = event_SQL.rellenar_eventos();
             this.setVisible(false);
         } else {
             JOptionPane.showMessageDialog(null, "La contraseñas no coinciden");
@@ -150,6 +160,7 @@ public class Registrar extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonConfrimarActionPerformed
 
     private void jButtonInicoSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonInicoSesionActionPerformed
+        //Crear ventana para iniciar sesion
         this.setVisible(false);
         Login volver = new Login();
         volver.setVisible(true);
