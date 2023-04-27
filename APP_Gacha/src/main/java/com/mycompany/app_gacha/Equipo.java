@@ -21,17 +21,17 @@ public class Equipo extends javax.swing.JFrame {
         this.setLocationRelativeTo(null);
         //Diseño de la tabla a visualizar
         DefaultTableModel modelo = new DefaultTableModel();
-        modelo.addColumn("ID");
         modelo.addColumn("Nombre");
         modelo.addColumn("TAG");
         modelo.addColumn("Tipo");
+        modelo.addColumn("Soul");
         String[] datos = new String[4];
         //Datos a mostrar en el jTable
         user.getEquipo().forEach(personaje -> {
-           datos[0] = String.valueOf(personaje.getId_personaje());
-           datos[1] = personaje.getNombre();
-           datos[2] = personaje.getTitulo();
-           datos[3] = personaje.getTipo();
+           datos[0] = personaje.getNombre();
+           datos[1] = personaje.getTitulo();
+           datos[2] = personaje.getTipo();
+           datos[3] = String.valueOf(personaje.getSoul());
            modelo.addRow(datos);
         });
         jTableEquipo.setModel(modelo);

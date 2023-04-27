@@ -4,7 +4,7 @@
  */
 package com.mycompany.DAO;
 
-import static com.mycompany.DAO.Conexion.getConexion;
+import static com.mycompany.DAO.Conexion.*;
 import com.mycompany.app_gacha.Main;
 import static com.mycompany.app_gacha.Main.progress;
 import com.mycompany.dominio.Progreso;
@@ -38,9 +38,9 @@ public class ProgresoDAO implements IProgesoDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                rs.close();
-                ps.close();
-                getConexion().close();
+                close(rs);
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
@@ -63,8 +63,8 @@ public class ProgresoDAO implements IProgesoDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                ps.close();
-                getConexion().close();
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
@@ -87,7 +87,8 @@ public class ProgresoDAO implements IProgesoDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                ps.close();
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }

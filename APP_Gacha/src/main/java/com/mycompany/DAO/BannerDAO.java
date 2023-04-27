@@ -5,8 +5,10 @@
 package com.mycompany.DAO;
 
 import static com.mycompany.DAO.Conexion.*;
+import com.mycompany.dominio.Banner;
 import com.mycompany.dominio.Personaje;
-import java.sql.*;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -15,26 +17,23 @@ import javax.swing.JOptionPane;
  *
  * @author joseb
  */
-public class PersonajeDAO implements IPersonajeDAO{
+public class BannerDAO implements IBannerDAO{
     
-    private final String SQL_SELECT = "SELECT * FROM personaje;";
+    private final String SQL_SELECT = "SELECT * FROM banner;";
     
-    //Para hacer una lista con todos los objetos de clase Personaje
     @Override
-    public List<Personaje> rellenar_personajes() {
+    public List<Banner> rellenarBanner() {
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Personaje> personajes= new ArrayList<Personaje>();
+        List<Banner> banner= new ArrayList<Banner>();
         try {
             ps = getConexion().prepareCall(SQL_SELECT);
             rs = ps.executeQuery();
             while (rs.next()) {
-                personajes.add(new Personaje(rs.getInt("id_personaje"), 
-                        rs.getString("nombre"), rs.getString("titulo"), rs.getString("tipo"), 
-                        rs.getInt("salud"), rs.getInt("nivel"), 
-                        rs.getInt("danio_fisico"), rs.getInt("danio_energia"), 
-                        rs.getInt("defensa_fisico"), rs.getInt("defensa_energia"), 
-                        rs.getInt("critico"), rs.getInt("soul"), rs.getInt("estrellas")));
+                banner.add(new Banner(rs.getInt("id_banner"), 
+                        rs.getString("nombre"), rs.getInt("precio"), rs.getInt("step"), 
+                        rs.getInt("prob_nuevo"), rs.getInt("prob_sp"), 
+                        rs.getInt("prob_ex"), rs.getInt("prob_hero")));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
@@ -47,6 +46,18 @@ public class PersonajeDAO implements IPersonajeDAO{
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
         }
-        return personajes;
+        return banner;
+    }
+
+    @Override
+    public List<Personaje> rellenarBannerPersonajes(List<Personaje> personajes) {
+        List<Personaje> lista = new ArrayList<Personaje>();
+        for (int i = 0; i < 10; i++) {
+            int x = (int) (Math.random() * personajes.size());
+            if (!(lista.contains(personajes.get(x)))) {
+                lista.add(personajes.get(x));
+            }
+        }
+        return lista;
     }
 }

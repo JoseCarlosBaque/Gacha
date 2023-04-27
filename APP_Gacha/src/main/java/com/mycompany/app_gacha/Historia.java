@@ -7,6 +7,7 @@ package com.mycompany.app_gacha;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,7 @@ public class Historia extends javax.swing.JFrame {
         ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Historia.png");
         Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(fondo);
+        jLabel2.setText(Main.eventos.get(0).getNombre());
     }
 
     /**
@@ -36,17 +38,19 @@ public class Historia extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel4 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox<>();
+        jComboNiveles = new javax.swing.JComboBox<>();
         jVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPlay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel4.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dimensional Distorsion", "After the Tournament...", "Pursuing Mercenary Tao", "Unrivaled Assasin", "Reinvestigation", "Invasion of the Warrior Race", "Premonition of Doom", "Ghost Town Investigation", "Mysterious Ki", "New Enemy", "Malicious Android: Cell", "Squad Leader", "World´s Greatest Teacher", "Telekinetic Threat", "Clever Krilin", "Turtle School Trial Lesson", "Revenge of Crane School", "Crane School Pride", "Fierce Fight for Honor", "Alien Warior Encounter" }));
-        jPanel4.add(jComboBox2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 310, -1, -1));
+        jComboNiveles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dimensional Distorsion", "After the Tournament...", "Pursuing Mercenary Tao", "Unrivaled Assasin", "Reinvestigation", "Invasion of the Warrior Race", "Premonition of Doom", "Ghost Town Investigation", "Mysterious Ki", "New Enemy", "Malicious Android: Cell", "Squad Leader", "World´s Greatest Teacher", "Telekinetic Threat", "Clever Krilin", "Turtle School Trial Lesson", "Revenge of Crane School", "Crane School Pride", "Fierce Fight for Honor", "Alien Warior Encounter" }));
+        jPanel4.add(jComboNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 340, -1, -1));
 
         jVolver.setText("<-");
         jVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -56,6 +60,17 @@ public class Historia extends javax.swing.JFrame {
         });
         jPanel4.add(jVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
         jPanel4.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 281));
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel4.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 300, 180, 20));
+
+        jPlay.setText("Play");
+        jPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPlayActionPerformed(evt);
+            }
+        });
+        jPanel4.add(jPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
 
         getContentPane().add(jPanel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 410));
 
@@ -67,6 +82,52 @@ public class Historia extends javax.swing.JFrame {
         this.setVisible(false);
         mp.setVisible(true);
     }//GEN-LAST:event_jVolverActionPerformed
+
+    private void jPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPlayActionPerformed
+        switch(jComboNiveles.getSelectedIndex()) {
+             case 0:
+                break;
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                break;
+            case 5:
+                break;
+            case 6:
+                break;
+            case 7:
+                break;
+            case 8:
+                break;
+            case 9:
+                break;
+            case 10:
+                break;
+            case 11:
+                break;
+            case 12:
+                break;
+            case 13:
+                break;
+            case 14:
+                break;
+            case 15:
+                break;
+            case 16:
+                break;
+            case 17:
+                break;
+            case 18:
+                break;
+            case 19:
+                break;
+            default: JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_jPlayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -104,9 +165,11 @@ public class Historia extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox2;
+    private javax.swing.JComboBox<String> jComboNiveles;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JButton jPlay;
     private javax.swing.JButton jVolver;
     // End of variables declaration//GEN-END:variables
 }

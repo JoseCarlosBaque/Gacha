@@ -8,7 +8,7 @@ package com.mycompany.dominio;
  *
  * @author joseb
  */
-public class Personaje {
+public class Personaje implements Cloneable{
     private int id_personaje;
     private String nombre;
     private String titulo;
@@ -168,5 +168,10 @@ public class Personaje {
 
     public void setConseguido(boolean conseguido) {
         this.conseguido = conseguido;
+    }
+    
+    @Override
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
     }
 }

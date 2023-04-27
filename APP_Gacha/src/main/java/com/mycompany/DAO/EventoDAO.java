@@ -4,7 +4,7 @@
  */
 package com.mycompany.DAO;
 
-import static com.mycompany.DAO.Conexion.getConexion;
+import static com.mycompany.DAO.Conexion.*;
 import static com.mycompany.app_gacha.Main.eventos;
 import static com.mycompany.app_gacha.Main.progress;
 import com.mycompany.dominio.Evento;
@@ -39,9 +39,9 @@ public class EventoDAO implements IEventoDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                rs.close();
-                ps.close();
-                getConexion().close();
+                close(rs);
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
@@ -69,9 +69,9 @@ public class EventoDAO implements IEventoDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                rs.close();
-                ps.close();
-                getConexion().close();
+                close(rs);
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }

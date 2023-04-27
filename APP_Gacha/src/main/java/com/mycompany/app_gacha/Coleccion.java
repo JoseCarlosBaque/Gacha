@@ -35,9 +35,9 @@ public class Coleccion extends javax.swing.JFrame {
            datos[2] = personaje.getTitulo();
            datos[3] = personaje.getTipo();
            if (personaje.isConseguido() == true) {
-               datos[4] = "✔";
+               datos[4] = "    ✔";
             } else if (personaje.isConseguido() == false) {
-                datos[4] = "x";
+               datos[4] = "    x";
             }
            modelo.addRow(datos);
         });
@@ -74,6 +74,7 @@ public class Coleccion extends javax.swing.JFrame {
 
             }
         ));
+        jTablePersonaje.setToolTipText("");
         jTablePersonaje.setEditingColumn(0);
         jTablePersonaje.setEditingRow(0);
         jScrollPane1.setViewportView(jTablePersonaje);

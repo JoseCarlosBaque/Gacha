@@ -23,6 +23,12 @@ public class Main {
     public static IProgesoDAO progress_sql = new ProgresoDAO();
     public static IEventoDAO event_SQL = new EventoDAO();
     public static List<Evento> eventos = event_SQL.rellenar_eventos();
+    public static IBannerDAO banner_SQL = new BannerDAO();
+    public static List<Banner> banners = banner_SQL.rellenarBanner();
+    public static List<Personaje> banner_content = banner_SQL.rellenarBannerPersonajes(tabla);
+    public static List<Personaje> banner_content1 = banner_SQL.rellenarBannerPersonajes(tabla);
+    public static List<Personaje> banner_content2 = banner_SQL.rellenarBannerPersonajes(tabla);
+    public static int cont = tabla.size();//contador para id al clonar el objeto
     //Fin Variables Globales
     
     public static void main(String[] args) {

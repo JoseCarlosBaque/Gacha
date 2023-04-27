@@ -4,18 +4,28 @@
  */
 package com.mycompany.app_gacha;
 
+import static com.mycompany.app_gacha.Main.*;
+import com.mycompany.dominio.Personaje;
+import java.awt.Image;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author joseb
  */
 public class BannerInicial extends javax.swing.JFrame {
-
+    
     /**
      * Creates new form BannerInicial
      */
     public BannerInicial() {
         initComponents();
         this.setLocationRelativeTo(null);
+        ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Banner1.png");
+        Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
+        jLabel1.setIcon(fondo);
     }
 
     /**
@@ -27,21 +37,151 @@ public class BannerInicial extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
+        jRates = new javax.swing.JButton();
+        jShowPersonajes = new javax.swing.JButton();
+        jMulti = new javax.swing.JButton();
+        jSingle = new javax.swing.JButton();
+        jVolver = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jRates.setText("%");
+        jRates.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRatesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jRates, new org.netbeans.lib.awtextra.AbsoluteConstraints(350, 10, -1, -1));
+
+        jShowPersonajes.setText("Personajes");
+        jShowPersonajes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jShowPersonajesActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jShowPersonajes, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 10, -1, -1));
+
+        jMulti.setText("Summon X10");
+        jMulti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMultiActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jMulti, new org.netbeans.lib.awtextra.AbsoluteConstraints(300, 260, 110, 30));
+
+        jSingle.setText("Summon X1");
+        jSingle.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jSingleActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jSingle, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 260, 110, 30));
+
+        jVolver.setText("<-");
+        jVolver.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jVolverActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 281));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 319, Short.MAX_VALUE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jShowPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowPersonajesActionPerformed
+        for (int i = 0; i < banner_content1.size(); i++) {
+            JOptionPane.showMessageDialog(null, banner_content1.get(i).getNombre());
+        }
+    }//GEN-LAST:event_jShowPersonajesActionPerformed
+
+    private void jVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jVolverActionPerformed
+        MenuPrincipal mp = new MenuPrincipal();
+        this.setVisible(false);
+        mp.setVisible(true);
+    }//GEN-LAST:event_jVolverActionPerformed
+
+    private void jSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSingleActionPerformed
+        int x = (int) (Math.random() * banner_content.size());
+        if (banner_content.get(x).isConseguido() == false) {
+                try {
+                    Personaje pj = (Personaje) banner_content.get(x).clone();
+                    banner_content.get(x).setConseguido(true);
+                    pj.setId_personaje(cont++);
+                    user.getEquipo().add(pj);
+                    JOptionPane.showMessageDialog(null, "Has conseguido a " + banner_content.get(x).getNombre());
+                } catch (CloneNotSupportedException ex) {
+                    JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+                }
+        } else {
+                for (int i = 0; i < user.getEquipo().size(); i++) {
+                if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
+                    if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                        user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
+                        JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                    } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                        user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
+                        JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                    } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                        user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
+                        JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                    }
+                } 
+            }
+        }
+    }//GEN-LAST:event_jSingleActionPerformed
+
+    private void jMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultiActionPerformed
+        for (int j = 0; j < 10; j++) {
+            int x = (int) (Math.random() * banner_content.size());
+            if (banner_content.get(x).isConseguido() == false) {
+                    try {
+                        Personaje pj = (Personaje) banner_content.get(x).clone();
+                        banner_content.get(x).setConseguido(true);
+                        pj.setId_personaje(cont++);
+                        user.getEquipo().add(pj);
+                        JOptionPane.showMessageDialog(null, "Has conseguido a " + banner_content.get(x).getNombre());
+                    } catch (CloneNotSupportedException ex) {
+                        JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+                    }
+            } else {
+                    for (int i = 0; i < user.getEquipo().size(); i++) {
+                    if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
+                        if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                            user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
+                            JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                        } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                            user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
+                            JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                        } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                            user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
+                            JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                        }
+                    } 
+                }
+            }
+        }
+    }//GEN-LAST:event_jMultiActionPerformed
+
+    private void jRatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRatesActionPerformed
+        JOptionPane.showMessageDialog(null,"Probabilidad Nuevo Personaje: " + banners.get(0).getProb_nuevo() + "%\nProbabilidad de Sparking: " + banners.get(0).getProb_sp()
+        + "%\nProbabilidad de Extreme: " + banners.get(0).getProb_ex() + "%\nProbabilidad de Hero: " + banners.get(0).getProb_hero() + "%");
+    }//GEN-LAST:event_jRatesActionPerformed
 
     /**
      * @param args the command line arguments
@@ -79,5 +219,12 @@ public class BannerInicial extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JButton jMulti;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jRates;
+    private javax.swing.JButton jShowPersonajes;
+    private javax.swing.JButton jSingle;
+    private javax.swing.JButton jVolver;
     // End of variables declaration//GEN-END:variables
 }

@@ -4,9 +4,9 @@
  */
 package com.mycompany.DAO;
 
+import static com.mycompany.DAO.Conexion.*;
 import com.mycompany.app_gacha.Main;
 import com.mycompany.app_gacha.MenuPrincipal;
-import static com.mycompany.DAO.Conexion.getConexion;
 import com.mycompany.dominio.Usuario;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -38,8 +38,8 @@ public class UsuarioDAO implements IUsuarioDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                ps.close();
-                getConexion().close();
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
@@ -72,10 +72,9 @@ public class UsuarioDAO implements IUsuarioDAO{
         } finally {
             try {
                 //Cerrar el rs, ps, conexion
-                rs.close();
-                ps.close();
-                getConexion().close();
-                
+                close(rs);
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
@@ -96,9 +95,9 @@ public class UsuarioDAO implements IUsuarioDAO{
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
         } finally {
             try {
-                rs.close();
-                ps.close();
-                getConexion().close();
+                close(rs);
+                close(ps);
+                close(getConexion());
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
