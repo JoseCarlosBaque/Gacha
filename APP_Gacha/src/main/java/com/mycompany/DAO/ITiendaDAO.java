@@ -4,14 +4,15 @@
  */
 package com.mycompany.DAO;
 
-import com.mycompany.dominio.Personaje;
-import com.mycompany.dominio.Usuario;
+import com.mycompany.dominio.Item;
+import com.mycompany.dominio.Tienda;
 import java.util.List;
 
 /**
  *
  * @author joseb
  */
-public interface IPersonajeDAO {
-    public List<Personaje> rellenar_personajes();
+public interface ITiendaDAO {
+    public List<Tienda> rellenar_tiendas();
+    public List<Item> rellenarItemsTienda(List<Item> items);
 }

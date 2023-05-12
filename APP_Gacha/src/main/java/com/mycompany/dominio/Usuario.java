@@ -16,6 +16,7 @@ public class Usuario {
     private String clave;
     private int nivel;
     private ArrayList<Personaje> equipo = new ArrayList<Personaje>();
+    private ArrayList<Item> items = new ArrayList<Item>();
 
     public Usuario() {
     }
@@ -72,8 +73,13 @@ public class Usuario {
     public void setEquipo(ArrayList<Personaje> equipo) {
         this.equipo = equipo;
     }
+
+    public ArrayList<Item> getItems() {
+        return items;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
     
-//    public void logear(JFrame login) {
-//        login.setVisible(true);
-//    }
 }

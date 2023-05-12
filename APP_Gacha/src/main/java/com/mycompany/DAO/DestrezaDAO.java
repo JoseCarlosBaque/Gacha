@@ -4,9 +4,11 @@
  */
 package com.mycompany.DAO;
 
-import static com.mycompany.DAO.Conexion.*;
-import com.mycompany.dominio.Personaje;
-import java.sql.*;
+import static com.mycompany.DAO.Conexion.close;
+import static com.mycompany.DAO.Conexion.getConexion;
+import com.mycompany.dominio.Destreza;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -15,26 +17,21 @@ import javax.swing.JOptionPane;
  *
  * @author joseb
  */
-public class PersonajeDAO implements IPersonajeDAO {
+public class DestrezaDAO implements IDestrezaDAO{
+    
+    private final String SQL_SELECT = "SELECT * FROM destreza;";
 
-    private final String SQL_SELECT = "SELECT * FROM personaje;";
-
-    //Para hacer una lista con todos los objetos de clase Personaje
     @Override
-    public List<Personaje> rellenar_personajes() {
+    public List<Destreza> rellenar_cartas() {
         PreparedStatement ps = null;
         ResultSet rs = null;
-        List<Personaje> personajes = new ArrayList<Personaje>();
+        List<Destreza> cartas= new ArrayList<Destreza>();
         try {
             ps = getConexion().prepareCall(SQL_SELECT);
             rs = ps.executeQuery();
             while (rs.next()) {
-                personajes.add(new Personaje(rs.getInt("id_personaje"),
-                        rs.getString("nombre"), rs.getString("titulo"), rs.getString("tipo"),
-                        rs.getInt("salud"), rs.getInt("nivel"),
-                        rs.getInt("danio_fisico"), rs.getInt("danio_energia"),
-                        rs.getInt("defensa_fisico"), rs.getInt("defensa_energia"),
-                        rs.getInt("critico"), rs.getInt("soul"), rs.getInt("estrellas")));
+                cartas.add(new Destreza(rs.getInt("id_destreza"), rs.getString("tipo"), 
+                        rs.getInt("danio"), rs.getInt("multiplicador")));
             }
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error: " + e.toString());
@@ -47,6 +44,7 @@ public class PersonajeDAO implements IPersonajeDAO {
                 JOptionPane.showMessageDialog(null, "Error: " + e.toString());
             }
         }
-        return personajes;
+        return cartas;
     }
+    
 }

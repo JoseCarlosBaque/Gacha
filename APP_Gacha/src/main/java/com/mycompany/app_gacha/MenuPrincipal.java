@@ -60,6 +60,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jItemBannerEspecial1 = new javax.swing.JMenuItem();
         jItemBannerEspecial2 = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
+        jMenuTienda1 = new javax.swing.JMenuItem();
+        jMenuTienda2 = new javax.swing.JMenuItem();
+        jMenuTienda3 = new javax.swing.JMenuItem();
+        jMenu5 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Menu Principal");
@@ -175,7 +179,38 @@ public class MenuPrincipal extends javax.swing.JFrame {
         jMenuBar1.add(jMenu3);
 
         jMenu4.setText("Tienda");
+
+        jMenuTienda1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.CTRL_DOWN_MASK));
+        jMenuTienda1.setText("Tienda 1");
+        jMenuTienda1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTienda1ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuTienda1);
+
+        jMenuTienda2.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.ALT_DOWN_MASK));
+        jMenuTienda2.setText("Tienda 2");
+        jMenuTienda2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTienda2ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuTienda2);
+
+        jMenuTienda3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_T, java.awt.event.InputEvent.SHIFT_DOWN_MASK));
+        jMenuTienda3.setText("Tienda 3");
+        jMenuTienda3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuTienda3ActionPerformed(evt);
+            }
+        });
+        jMenu4.add(jMenuTienda3);
+
         jMenuBar1.add(jMenu4);
+
+        jMenu5.setText("Configuracion");
+        jMenuBar1.add(jMenu5);
 
         setJMenuBar(jMenuBar1);
 
@@ -246,6 +281,24 @@ public class MenuPrincipal extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jLabel3MouseClicked
 
+    private void jMenuTienda1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTienda1ActionPerformed
+        this.setVisible(false);
+        TiendaPrincipal tp = new TiendaPrincipal();
+        tp.setVisible(true);
+    }//GEN-LAST:event_jMenuTienda1ActionPerformed
+
+    private void jMenuTienda2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTienda2ActionPerformed
+        this.setVisible(false);
+        Tienda2 t2= new Tienda2();
+        t2.setVisible(true);
+    }//GEN-LAST:event_jMenuTienda2ActionPerformed
+
+    private void jMenuTienda3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuTienda3ActionPerformed
+        this.setVisible(false);
+        Tienda3 t3= new Tienda3();
+        t3.setVisible(true);
+    }//GEN-LAST:event_jMenuTienda3ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -298,6 +351,10 @@ public class MenuPrincipal extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
+    private javax.swing.JMenu jMenu5;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuTienda1;
+    private javax.swing.JMenuItem jMenuTienda2;
+    private javax.swing.JMenuItem jMenuTienda3;
     // End of variables declaration//GEN-END:variables
 }

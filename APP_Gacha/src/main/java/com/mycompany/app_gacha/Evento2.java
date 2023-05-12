@@ -4,9 +4,11 @@
  */
 package com.mycompany.app_gacha;
 
+import static com.mycompany.app_gacha.Main.cont_lvl;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -15,7 +17,7 @@ import javax.swing.ImageIcon;
 public class Evento2 extends javax.swing.JFrame {
 
     /**
-     * Creates new form Evento2
+     * Creates new form Evento1
      */
     public Evento2() {
         initComponents();
@@ -23,6 +25,7 @@ public class Evento2 extends javax.swing.JFrame {
         ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Torneo del Poder.png");
         Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(fondo);
+        jLabel2.setText(Main.eventos.get(1).getNombre());
     }
 
     /**
@@ -35,12 +38,20 @@ public class Evento2 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jComboNiveles = new javax.swing.JComboBox<>();
         jVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jPlay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(500, 410));
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jComboNiveles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Unleashing the Limit Breaker", "The Timeless Clash of Universes", "Battle Among Gods and Mortals", "Unveiling the True Potential", "Shadows of Destruction Descend", "Bonds Tested, Allies United", "An Unforeseen Twist of Fate", "Shattering the Boundaries of Power", "Roaring Chaos in the Arena", "A Universe on the Brink", "Reaching the Apex of Power", "The Symphony of Warriors", "The Desperate Gambit", "Striking Back Against Annihilation", "The Last Stand of Heroes", "Beyond the Realm of Mortals", "The Miraculous Revival", "Warriors of Indomitable Spirit", "The Battle for Survival Begins Anew", "The Legendary Champion Ascends" }));
+        jPanel1.add(jComboNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
         jVolver.setText("<-");
         jVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -51,16 +62,18 @@ public class Evento2 extends javax.swing.JFrame {
         jPanel1.add(jVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, -1));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 281));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 414, Short.MAX_VALUE)
-        );
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 296, 220, 20));
+
+        jPlay.setText("Play");
+        jPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPlayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
+
+        getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 420));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -70,6 +83,114 @@ public class Evento2 extends javax.swing.JFrame {
         this.setVisible(false);
         mp.setVisible(true);
     }//GEN-LAST:event_jVolverActionPerformed
+
+    private void jPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPlayActionPerformed
+        Nivel lvl = new Nivel();
+        switch (jComboNiveles.getSelectedIndex()) {
+            case 0:
+                cont_lvl = 41;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 1:
+                cont_lvl = 42;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 2:
+                cont_lvl = 43;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 3:
+                cont_lvl = 44;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 4:
+                cont_lvl = 45;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 5:
+                cont_lvl = 46;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 6:
+                cont_lvl = 47;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 7:
+                cont_lvl = 48;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 8:
+                cont_lvl = 49;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 9:
+                cont_lvl = 50;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 10:
+                cont_lvl = 51;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 11:
+                cont_lvl = 52;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 12:
+                cont_lvl = 53;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 13:
+                cont_lvl = 54;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 14:
+                cont_lvl = 55;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 15:
+                cont_lvl = 56;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 16:
+                cont_lvl = 57;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 17:
+                cont_lvl = 58;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 18:
+                cont_lvl = 59;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 19:
+                cont_lvl = 60;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_jPlayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -97,6 +218,7 @@ public class Evento2 extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Evento2.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
+        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
@@ -107,8 +229,11 @@ public class Evento2 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> jComboNiveles;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jPlay;
     private javax.swing.JButton jVolver;
     // End of variables declaration//GEN-END:variables
 }

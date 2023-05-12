@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author joseb
  */
 public class BannerInicial extends javax.swing.JFrame {
-    
+
     /**
      * Creates new form BannerInicial
      */
@@ -26,6 +26,11 @@ public class BannerInicial extends javax.swing.JFrame {
         ImageIcon imagen = new ImageIcon("src\\main\\java\\images\\Banner1.png");
         Icon fondo = new ImageIcon(imagen.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
         jLabel1.setIcon(fondo);
+        if (cont_free == 0) {
+            JOptionPane.showMessageDialog(null, "Tienes un Multi gratis!!!!!!");
+        } else {
+            jLabel2.setText("Tienes: " + user.getItems().get(0).getCantidad() + user.getItems().get(0).getNombre());
+        }
     }
 
     /**
@@ -43,6 +48,7 @@ public class BannerInicial extends javax.swing.JFrame {
         jMulti = new javax.swing.JButton();
         jSingle = new javax.swing.JButton();
         jVolver = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -88,6 +94,7 @@ public class BannerInicial extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jVolver, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 10, 50, 20));
+        jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(220, 20, -1, -1));
         jPanel1.add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 281));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -105,8 +112,8 @@ public class BannerInicial extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jShowPersonajesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jShowPersonajesActionPerformed
-        for (int i = 0; i < banner_content1.size(); i++) {
-            JOptionPane.showMessageDialog(null, banner_content1.get(i).getNombre());
+        for (int i = 0; i < banner_content.size(); i++) {
+            JOptionPane.showMessageDialog(null, banner_content.get(i).getNombre());
         }
     }//GEN-LAST:event_jShowPersonajesActionPerformed
 
@@ -117,39 +124,10 @@ public class BannerInicial extends javax.swing.JFrame {
     }//GEN-LAST:event_jVolverActionPerformed
 
     private void jSingleActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jSingleActionPerformed
-        int x = (int) (Math.random() * banner_content.size());
-        if (banner_content.get(x).isConseguido() == false) {
-                try {
-                    Personaje pj = (Personaje) banner_content.get(x).clone();
-                    banner_content.get(x).setConseguido(true);
-                    pj.setId_personaje(cont++);
-                    user.getEquipo().add(pj);
-                    JOptionPane.showMessageDialog(null, "Has conseguido a " + banner_content.get(x).getNombre());
-                } catch (CloneNotSupportedException ex) {
-                    JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
-                }
-        } else {
-                for (int i = 0; i < user.getEquipo().size(); i++) {
-                if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
-                    if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
-                        user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
-                        JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
-                    } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
-                        user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
-                        JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
-                    } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
-                        user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
-                        JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
-                    }
-                } 
-            }
-        }
-    }//GEN-LAST:event_jSingleActionPerformed
-
-    private void jMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultiActionPerformed
-        for (int j = 0; j < 10; j++) {
-            int x = (int) (Math.random() * banner_content.size());
-            if (banner_content.get(x).isConseguido() == false) {
+        if (user.getItems().size() > 0) {
+            if (user.getItems().get(0).getCantidad() >= 1) {
+                int x = (int) (Math.random() * banner_content.size());
+                if (banner_content.get(x).isConseguido() == false) {
                     try {
                         Personaje pj = (Personaje) banner_content.get(x).clone();
                         banner_content.get(x).setConseguido(true);
@@ -159,28 +137,108 @@ public class BannerInicial extends javax.swing.JFrame {
                     } catch (CloneNotSupportedException ex) {
                         JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
                     }
-            } else {
+                } else {
                     for (int i = 0; i < user.getEquipo().size(); i++) {
-                    if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
-                        if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
-                            user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
-                            JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
-                        } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
-                            user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
-                            JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
-                        } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
-                            user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
-                            JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                        if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
+                            if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
+                                JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                            } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
+                                JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                            } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
+                                JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                            }
                         }
-                    } 
+                    }
+                }
+                user.getItems().get(0).setCantidad(user.getItems().get(0).getCantidad() - 1);
+                jLabel2.setText("Te quedan: " + user.getItems().get(0).getCantidad() + user.getItems().get(0).getNombre());
+            } else {
+                JOptionPane.showMessageDialog(null, "No tienes suficiente " + items.get(0).getTipo() + " Necesitas 1 o mas para tirar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tienes suficiente " + items.get(0).getTipo() + " Necesitas 1 o mas para tirar");
+        }
+    }//GEN-LAST:event_jSingleActionPerformed
+
+    private void jMultiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMultiActionPerformed
+        if (cont_free == 0) {
+            for (int j = 0; j < 10; j++) {
+                int x = (int) (Math.random() * banner_content.size());
+                if (banner_content.get(x).isConseguido() == false) {
+                    try {
+                        Personaje pj = (Personaje) banner_content.get(x).clone();
+                        banner_content.get(x).setConseguido(true);
+                        pj.setId_personaje(cont++);
+                        user.getEquipo().add(pj);
+                        JOptionPane.showMessageDialog(null, "Has conseguido a " + banner_content.get(x).getNombre());
+                    } catch (CloneNotSupportedException ex) {
+                        JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+                    }
+                } else {
+                    for (int i = 0; i < user.getEquipo().size(); i++) {
+                        if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
+                            if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
+                                JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                            } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
+                                JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                            } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
+                                JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                            }
+                        }
+                    }
                 }
             }
+            cont_free++;
+        } else if (user.getItems().size() > 0) {
+            if (user.getItems().get(0).getCantidad() >= 50) {
+                for (int j = 0; j < 10; j++) {
+                    int x = (int) (Math.random() * banner_content.size());
+                    if (banner_content.get(x).isConseguido() == false) {
+                        try {
+                            Personaje pj = (Personaje) banner_content.get(x).clone();
+                            banner_content.get(x).setConseguido(true);
+                            pj.setId_personaje(cont++);
+                            user.getEquipo().add(pj);
+                            JOptionPane.showMessageDialog(null, "Has conseguido a " + banner_content.get(x).getNombre());
+                        } catch (CloneNotSupportedException ex) {
+                            JOptionPane.showMessageDialog(null, "Error: " + ex.toString());
+                        }
+                    } else {
+                        for (int i = 0; i < user.getEquipo().size(); i++) {
+                            if (banner_content.get(x).getNombre().equals(user.getEquipo().get(i).getNombre())) {
+                                if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                    user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 100);
+                                    JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                                } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                    user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 300);
+                                    JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                                } else if (banner_content.get(x).getTipo().equals(user.getEquipo().get(i).getTipo())) {
+                                    user.getEquipo().get(i).setSoul(user.getEquipo().get(i).getSoul() + 600);
+                                    JOptionPane.showMessageDialog(null, "Has conseguido a " + user.getEquipo().get(i).getNombre());
+                                }
+                            }
+                        }
+                    }
+                }
+                user.getItems().get(0).setCantidad(user.getItems().get(0).getCantidad() - 50);
+                jLabel2.setText("Te quedan: " + user.getItems().get(0).getCantidad() + user.getItems().get(0).getNombre());
+            } else {
+                JOptionPane.showMessageDialog(null, "No tienes suficiente " + items.get(0).getTipo() + " Necesitas 50 o mas para tirar");
+            }
+        } else {
+            JOptionPane.showMessageDialog(null, "No tienes suficiente " + items.get(0).getTipo() + " Necesitas 50 o mas para tirar");
         }
     }//GEN-LAST:event_jMultiActionPerformed
 
     private void jRatesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRatesActionPerformed
-        JOptionPane.showMessageDialog(null,"Probabilidad Nuevo Personaje: " + banners.get(0).getProb_nuevo() + "%\nProbabilidad de Sparking: " + banners.get(0).getProb_sp()
-        + "%\nProbabilidad de Extreme: " + banners.get(0).getProb_ex() + "%\nProbabilidad de Hero: " + banners.get(0).getProb_hero() + "%");
+        JOptionPane.showMessageDialog(null, "Probabilidad Nuevo Personaje: " + banners.get(0).getProb_nuevo() + "%\nProbabilidad de Sparking: " + banners.get(0).getProb_sp()
+                + "%\nProbabilidad de Extreme: " + banners.get(0).getProb_ex() + "%\nProbabilidad de Hero: " + banners.get(0).getProb_hero() + "%");
     }//GEN-LAST:event_jRatesActionPerformed
 
     /**
@@ -220,6 +278,7 @@ public class BannerInicial extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JButton jMulti;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JButton jRates;

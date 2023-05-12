@@ -4,6 +4,8 @@
  */
 package com.mycompany.dominio;
 
+import static com.mycompany.app_gacha.Main.cartas;
+
 /**
  *
  * @author joseb
@@ -168,6 +170,17 @@ public class Personaje implements Cloneable{
 
     public void setConseguido(boolean conseguido) {
         this.conseguido = conseguido;
+    }
+    
+    public int calculo_danio(int destreza) {
+        int damage = 0;
+        int x = (int) (Math.random() * 100);
+        if (this.getCritico() <= x) {
+            damage = ((this.getDaño_fisico() + cartas.get(destreza).getDanio()) * cartas.get(destreza).getMultlipicador()) / 100;
+        } else {
+            damage = (this.getDaño_fisico() + cartas.get(destreza).getDanio()) / 100;
+        }
+        return damage;
     }
     
     @Override

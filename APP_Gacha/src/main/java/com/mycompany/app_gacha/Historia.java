@@ -4,6 +4,7 @@
  */
 package com.mycompany.app_gacha;
 
+import static com.mycompany.app_gacha.Main.cont_lvl;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
@@ -84,48 +85,110 @@ public class Historia extends javax.swing.JFrame {
     }//GEN-LAST:event_jVolverActionPerformed
 
     private void jPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPlayActionPerformed
-        switch(jComboNiveles.getSelectedIndex()) {
-             case 0:
+        Nivel lvl = new Nivel();
+        switch (jComboNiveles.getSelectedIndex()) {
+            case 0:
+                cont_lvl = 1;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 1:
+                cont_lvl = 2;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 2:
+                cont_lvl = 3;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 3:
+                cont_lvl = 4;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 4:
+                cont_lvl = 5;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 5:
+                cont_lvl = 6;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 6:
+                cont_lvl = 7;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 7:
+                cont_lvl = 8;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 8:
+                cont_lvl = 9;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 9:
+                cont_lvl = 10;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 10:
+                cont_lvl = 11;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 11:
+                cont_lvl = 12;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 12:
+                cont_lvl = 13;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 13:
+                cont_lvl = 14;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 14:
+                cont_lvl = 15;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 15:
+                cont_lvl = 16;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 16:
+                cont_lvl = 17;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 17:
+                cont_lvl = 18;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 18:
+                cont_lvl = 19;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
             case 19:
+                cont_lvl = 20;
+                this.setVisible(false);
+                lvl.setVisible(true);
                 break;
-            default: JOptionPane.showMessageDialog(null, "Error");
+            default:
+                JOptionPane.showMessageDialog(null, "Error");
         }
     }//GEN-LAST:event_jPlayActionPerformed
 

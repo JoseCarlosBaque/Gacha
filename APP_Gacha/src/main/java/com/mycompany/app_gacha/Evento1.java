@@ -4,9 +4,11 @@
  */
 package com.mycompany.app_gacha;
 
+import static com.mycompany.app_gacha.Main.cont_lvl;
 import java.awt.Image;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -36,10 +38,11 @@ public class Evento1 extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jComboNiveles = new javax.swing.JComboBox<>();
         jVolver = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jPlay = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(500, 410));
@@ -47,8 +50,8 @@ public class Evento1 extends javax.swing.JFrame {
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A Mstery Dark Foe", "Dark Nightmare", "Black Harbinger of Destruccion", "God-Transcending Battle", "Rose-Tinted Plot", "Searing Rose-Colored Fury", "Rage of the Proud Father-Son Duo", "The Ultimate Power of a God", "Fusion in Blue", "Last Judgment...Or Last Hope", "Sublime Blue!", "Human Sin and Divine Failure", "Ultimate Battle!", "A New Hope", "Miraculous World-Protecting Power!" }));
-        jPanel1.add(jComboBox1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
+        jComboNiveles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "A Mstery Dark Foe", "Dark Nightmare", "Black Harbinger of Destruccion", "God-Transcending Battle", "Zamasu Needs Help?!", "Rose-Tinted Plot", "Searing Rose-Colored Fury", "Rage of the Proud Father-Son Duo", "The Ultimate Power of a God", "The distraction before the battle", "Fusion in Blue", "Last Judgment...Or Last Hope", "Sublime Blue!", "Human Sin and Divine Failure", "A Bizarre Reunion", "Ultimate Battle!", "The Fusion in Blue Fail?!", "A New Hope", "The Saiyan From The Future", "Miraculous World-Protecting Power!" }));
+        jPanel1.add(jComboNiveles, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 340, -1, -1));
 
         jVolver.setText("<-");
         jVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -62,6 +65,14 @@ public class Evento1 extends javax.swing.JFrame {
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jPanel1.add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(147, 296, 220, 20));
 
+        jPlay.setText("Play");
+        jPlay.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jPlayActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jPlay, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 370, -1, -1));
+
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 500, 420));
 
         pack();
@@ -72,6 +83,114 @@ public class Evento1 extends javax.swing.JFrame {
         this.setVisible(false);
         mp.setVisible(true);
     }//GEN-LAST:event_jVolverActionPerformed
+
+    private void jPlayActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jPlayActionPerformed
+        Nivel lvl = new Nivel();
+        switch (jComboNiveles.getSelectedIndex()) {
+            case 0:
+                cont_lvl = 21;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 1:
+                cont_lvl = 22;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 2:
+                cont_lvl = 23;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 3:
+                cont_lvl = 24;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 4:
+                cont_lvl = 25;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 5:
+                cont_lvl = 26;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 6:
+                cont_lvl = 27;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 7:
+                cont_lvl = 28;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 8:
+                cont_lvl = 29;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 9:
+                cont_lvl = 30;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 10:
+                cont_lvl = 31;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 11:
+                cont_lvl = 32;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 12:
+                cont_lvl = 33;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 13:
+                cont_lvl = 34;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 14:
+                cont_lvl = 35;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 15:
+                cont_lvl = 36;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 16:
+                cont_lvl = 37;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 17:
+                cont_lvl = 38;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 18:
+                cont_lvl = 39;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            case 19:
+                cont_lvl = 40;
+                this.setVisible(false);
+                lvl.setVisible(true);
+                break;
+            default:
+                JOptionPane.showMessageDialog(null, "Error");
+        }
+    }//GEN-LAST:event_jPlayActionPerformed
 
     /**
      * @param args the command line arguments
@@ -109,10 +228,11 @@ public class Evento1 extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> jComboNiveles;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jPlay;
     private javax.swing.JButton jVolver;
     // End of variables declaration//GEN-END:variables
 }
