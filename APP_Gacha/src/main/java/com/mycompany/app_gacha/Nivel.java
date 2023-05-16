@@ -76,7 +76,7 @@ public class Nivel extends javax.swing.JFrame {
             jLabel1.setIcon(enemy);
         } else if (cont_lvl >= 26 && cont_lvl <= 30) {
             jLive.setValue(1500);
-            ImageIcon enemy_img = new ImageIcon("src\\main\\java\\images\\GokuBackRose.jpg");
+            ImageIcon enemy_img = new ImageIcon("src\\main\\java\\images\\GokuBlackRose.jpg");
             Icon enemy = new ImageIcon(enemy_img.getImage().getScaledInstance(jLabel1.getWidth(), jLabel1.getHeight(), Image.SCALE_DEFAULT));
             jLabel1.setIcon(enemy);
         } else if (cont_lvl >= 31 && cont_lvl <= 35) {
