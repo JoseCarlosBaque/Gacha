@@ -28,7 +28,7 @@ public class BannerInicial extends javax.swing.JFrame {
         jLabel1.setIcon(fondo);
         if (cont_free == 0) {
             JOptionPane.showMessageDialog(null, "Tienes un Multi gratis!!!!!!");
-        } else {
+        } else if (user.getItems().size() > 0) {
             jLabel2.setText("Tienes: " + user.getItems().get(0).getCantidad() + user.getItems().get(0).getNombre());
         }
     }
